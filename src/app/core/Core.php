@@ -4,22 +4,33 @@
 
         public function start_app($urlGet){
 
-            var_dump($urlGet);
+            // var_dump($urlGet);
 
+            if(empty($urlGet)){
 
-
-            if($urlGet == null){
+                // make auth verification
 
                 $controller = 'HomeController';
+                $method = ' home';
 
                 echo $controller;
+                echo $method;
                 
             } else {
 
-                $teste = explode('/', $urlGet['url']);
+                // make if to home, and if to auth
 
-                $controller = $teste[0];
-                echo $controller; 
+                $uri = explode('/', $urlGet['url']);
+
+                $controller = $uri[0];
+                echo $controller;
+
+                if(!empty($uri[1])){
+                    $method = $uri[1];
+                    echo $method;
+                }
             }
+
+            // call_user_func_array(array(new $controller, $method), array());
         }
     }
