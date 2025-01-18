@@ -22,15 +22,19 @@
 
                 $uri = explode('/', $urlGet['url']);
 
-                $controller = $uri[0];
+                $page = $uri[0];
+
+                $controller = ucfirst($uri[0]) . 'Controller';
                 echo $controller;
 
-                if(!empty($uri[1])){
-                    $method = $uri[1];
-                    echo $method;
+                if($page === 'admin'){
+                    if($uri[1] === 'funcionarios'){
+                        $method = $page;
+                        echo $method;
+                    } 
                 }
             }
 
-            // call_user_func_array(array(new $controller, $method), array());
+            call_user_func_array(array(new $controller, $method), array());
         }
     }
