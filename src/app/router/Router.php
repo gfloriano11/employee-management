@@ -13,8 +13,6 @@
                 $uri_info['controller'] = $controller;
                 $uri_info['method'] = $method;
 
-                var_dump($uri_info);
-
             } else{
 
                 $uri = explode('/', $url['url']);
