@@ -3,6 +3,7 @@
 *{
     margin: 0;
     padding: 0;
+    text-decoration: none;
     --font-family: "Inter";
     --background-color: #e9e9e9;
 }
