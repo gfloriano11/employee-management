@@ -19,6 +19,12 @@
 
                 $controller = ucfirst($uri[0]) . 'Controller'; 
 
+                if($uri[0] === 'register' || $uri[0] === 'login'){
+                    $controller = 'AuthController';
+                    $method = $uri[0];
+                }
+                
+
                 if(class_exists($controller)){
 
                     if(!empty($uri[1])){
