@@ -3,6 +3,11 @@
     class AdminController{
 
         public function admin(){
-            echo 'você acessou os funcionarios';
+
+            echo 'selecione uma opção';
+        }
+
+        public function employee(){
+            echo 'lista de funcionarios:';
         }
     }
