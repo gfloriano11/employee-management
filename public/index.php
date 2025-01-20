@@ -6,6 +6,7 @@
     require_once '../src/app/router/Router.php';
 
     require_once '../src/app/controller/AdminController.php';
+    require_once '../src/app/controller/HomeController.php';
 
     $template = file_get_contents('../src/app/template/template.html');
 
