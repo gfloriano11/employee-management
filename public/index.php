@@ -3,6 +3,7 @@
     require_once '../vendor/autoload.php';
 
     require_once '../src/app/core/Core.php';
+    require_once '../src/app/router/Router.php';
 
     require_once '../src/app/controller/AdminController.php';
 
