@@ -7,8 +7,16 @@
             // to clarify: predefined url, we use the pretty url's, but for a search, it's ok to use query string!
             
             if(empty($url['url'])){
-                $controller = 'HomeController';
-                $method = 'home';
+                
+                $_SESSION = 'o';
+
+                if($_SESSION === 'oi'){
+                    $controller = 'HomeController';
+                    $method = 'home';
+                } else {
+                    $controller = 'HomeController';
+                    $method = 'menu';
+                }
 
                 $uri_info['controller'] = $controller;
                 $uri_info['method'] = $method;
