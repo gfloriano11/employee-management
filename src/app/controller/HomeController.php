@@ -21,6 +21,12 @@
         }
 
         public function home(){
-            echo 'welcome!';
+            $loader = new Twig\Loader\FilesystemLoader('../src/app/view');
+            $twig = new Twig\Environment($loader);
+            $template = $twig->load('home.html');
+
+            $content = $template->render();
+
+            echo $content;
         }
     }
