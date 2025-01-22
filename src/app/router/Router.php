@@ -8,15 +8,8 @@
             
             if(empty($url['url'])){
                 
-                $_SESSION = 'o';
-
-                if($_SESSION === 'oi'){
-                    $controller = 'HomeController';
-                    $method = 'home';
-                } else {
-                    $controller = 'HomeController';
-                    $method = 'menu';
-                }
+                $controller = 'HomeController';
+                $method = 'menu';
 
                 $uri_info['controller'] = $controller;
                 $uri_info['method'] = $method;
