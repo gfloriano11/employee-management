@@ -9,7 +9,7 @@
             if(empty($url['url'])){
                 
                 $controller = 'HomeController';
-                $method = 'menu';
+                $method = 'home';
 
                 $uri_info['controller'] = $controller;
                 $uri_info['method'] = $method;
@@ -25,6 +25,10 @@
                     $method = $uri[0];
                 }
                 
+                if($uri[0] === 'menu'){
+                    $controller = 'HomeController';
+                    $method = $uri[0];
+                }
 
                 if(class_exists($controller)){
 
