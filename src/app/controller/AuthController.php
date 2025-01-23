@@ -13,6 +13,12 @@
         }
 
         public function login(){
-            echo 'fazer login!';
+            $loader = new Twig\Loader\FilesystemLoader('../src/app/view/auth');
+            $twig = new Twig\Environment($loader);
+            $template = $twig->load('login.html'); 
+ 
+            $content = $template->render();
+ 
+            echo $content;
         }
     }
