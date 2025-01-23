@@ -6,6 +6,10 @@
 
             // to clarify: predefined url, we use the pretty url's, but for a search, it's ok to use query string!
 
+            if(empty($url)){
+                $url['url'] = 'error';
+            }
+
             $uri = explode('/', $url['url']);
 
             $controller = ucfirst($uri[0]) . 'Controller'; 
