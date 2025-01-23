@@ -10,8 +10,6 @@
 
             $controller = ucfirst($uri[0]) . 'Controller'; 
 
-            var_dump($uri);
-
             if($uri[0] === 'register' || $uri[0] === 'login'){
                 $controller = 'AuthController';
                 $method = $uri[0];
