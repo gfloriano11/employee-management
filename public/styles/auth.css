@@ -27,12 +27,26 @@ form{
     align-items: center;
 }
 
-#input_container{
+#register_container{
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-width: 10px;
+    min-height: 300px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#login_container{
     text-align: left;
     margin-top: 20px;
     margin-bottom: 20px;
     min-width: 10px;
     min-height: 150px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -56,12 +70,7 @@ form{
     height: 35px;
 }
 
-#email_container{
-    display: flex;
-    flex-direction: column;
-}
-
-#password_container{
+#input_container{
     display: flex;
     flex-direction: column;
 }

@@ -5,12 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/styles/auth.css">
     <link rel="stylesheet" href="public/styles/global.css">
-    <title>Register</title>
+    <title>Cadastre-se</title>
 </head>
 <body>
     <section id="application">
-        <div>
-            <p>registre-se:</p>
+        <div id="form_container">
+            <p id="text">Cadastre-se:</p>
+            <form method="POST" action="auth/login">
+                <div id="register_container">
+                    <div id="input_container">
+                        <label for="name">Nome</label>
+                        <input type="name" name="name" class="input">
+                    </div>
+                    <div id="input_container">
+                        <label for="surname">Sobrenome</label>
+                        <input type="surname" name="surname" class="input">
+                    </div>
+                    <div id="input_container">
+                        <label for="email">E-mail</label>
+                        <input type="email" name="email" class="input">
+                    </div>
+                    <div id="input_container">
+                        <label for="password">Senha</label>
+                        <input type="password" name="password" class="input">
+                    </div>
+                    <div id="input_container">
+                        <label for="confirm_password">Confirme sua Senha</label>
+                        <input type="password" name="confirm_password" class="input">
+                    </div>
+                </div>
+                <button id="submit">Logar</button>
+                <a href="forgotten_password">Esqueceu a senha?</a>
+            </form>
         </div>
     </section>
 </body>
