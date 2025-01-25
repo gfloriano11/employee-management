@@ -24,6 +24,7 @@
 form{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 #input_container{
@@ -67,4 +68,21 @@ form{
 
 label{
     padding-left: 10px;
+}
+
+#submit{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    min-width: 100px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid #8f8f8f;
+    background-color: #477CA8;
+    margin-bottom: 20px;
 }
