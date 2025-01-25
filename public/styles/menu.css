@@ -47,6 +47,7 @@ a{
     min-width: 100px;
     color: black;
     font-size: 16px;
+    letter-spacing: 1px;
 }
 
 #gray_button{
