@@ -16,7 +16,6 @@
 
             if($uri[0] === 'register' || $uri[0] === 'login'){
                 $controller = 'AuthController';
-                $method = $uri[0];
             }
             
             if($uri[0] === 'menu'){
@@ -43,6 +42,10 @@
 
                 } else {
                     $method = $uri[0];
+
+                    if($uri[0] === 'register' || $uri[0] === 'login'){
+                        $method = $uri[0] . '_form';
+                    }
                 }
 
                 $uri_info['controller'] = $controller;
