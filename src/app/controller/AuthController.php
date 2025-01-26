@@ -29,5 +29,7 @@
 
         public function login(){
             echo 'fazendo login...';
+
+            header('location: ../menu');
         }
     }
