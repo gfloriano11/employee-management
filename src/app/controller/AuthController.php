@@ -21,4 +21,13 @@
  
             echo $content;
         }
+
+        public function register(){
+            echo 'criando usuario...';
+
+        }
+
+        public function login(){
+            echo 'fazendo login...';
+        }
     }
