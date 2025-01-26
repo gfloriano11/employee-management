@@ -70,7 +70,28 @@ form{
     height: 35px;
 }
 
-#input_container{
+#select{
+    transition: 0.5s all ease;
+    min-width: 255px;
+    height: 31px;
+    border: 1px solid rgb(175, 175, 175);
+    border-radius: 10px;
+    padding-left: 5px;
+    font-size: 16px;
+}
+
+#select:focus{
+    outline: none;
+    font-size: 17px;
+    border: 1px solid rgb(100, 100, 100);
+    height: 35px;
+}
+
+#select_text{
+    margin-top: 3px;
+}
+
+.input_container{
     display: flex;
     flex-direction: column;
 }
@@ -94,4 +115,11 @@ label{
     border: 1px solid #8f8f8f;
     background-color: #477CA8;
     margin-bottom: 20px;
+}
+
+#forgotten_password{
+    text-align: right;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-right: 5px;
 }
