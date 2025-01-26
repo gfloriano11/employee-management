@@ -4,11 +4,14 @@
 
     require_once '../src/app/core/Core.php';
     require_once '../src/app/router/Router.php';
+    require_once '../src/app/connection/connection.php';
 
     require_once '../src/app/controller/AdminController.php';
     require_once '../src/app/controller/HomeController.php';
     require_once '../src/app/controller/AuthController.php';
     require_once '../src/app/controller/ErrorController.php';
+
+    require_once '../src/app/model/User.php';
 
     $template = file_get_contents('../src/app/template/template.html');
 
