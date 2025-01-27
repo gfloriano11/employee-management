@@ -54,7 +54,17 @@
                 $data['user'] = $row;
             }
 
-            return $data;
+            if(!empty($data)){
+
+                if($email === $data['user']->email){
+                    echo 'deu boa, kk';
+                }
+    
+                return $data;
+            } else {
+                
+                throw new Exception("Info inválida");
+            } 
         }
 
         public function updateInfo($field, $info){
