@@ -27,8 +27,13 @@
                 $user_info[$key] = $value;
             }
 
-            $user = new User;
-            $user->register($user_info);
+            if($user_info['password'] === $user_info['confirm_password']){
+                $user = new User;
+                $user->register($user_info);
+                
+            } else {
+                header('location: ../');
+            }
 
         }
 
