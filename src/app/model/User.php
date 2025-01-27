@@ -15,6 +15,12 @@
 
         public function register($info){
 
+            $conn = Connection::getConn();
+
+            if($conn->connect_error){
+                die('algo deu errado');
+            }
+
             foreach($info as $key => $value){
                 $$key = $value;
                 echo $$key . ' ';
@@ -24,6 +30,17 @@
             $this->surname = $surname;
             $this->email = $email;
             $this->password = $password;
+
+            $query = "INSERT INTO users
+            (first_name, surname, email, user_pass, post, is_admin)
+            VALUES
+            (?, ?, ?, ?, ?, ?)";
+
+            $statement = $conn->prepare($query);
+
+            $statement->bind_param('ssssss', $name, $surname, $email, $password, $post, $admin);
+
+            $statement->execute();
         }
 
         public function login($info){
