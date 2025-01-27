@@ -13,12 +13,48 @@
             $this->email = $email;
         }
 
-        public function __construct($id, $name, $surname, $email, $password){
-            $this->id = $id;
+        public function register($info){
+
+            foreach($info as $key => $value){
+                $$key = $value;
+                echo $$key . ' ';
+            }
+
             $this->name = $name;
             $this->surname = $surname;
             $this->email = $email;
             $this->password = $password;
+        }
+
+        public function login($info){
+
+            foreach($info as $key => $value){
+                $$key = $value;
+                echo $$key . ' ';
+            }
+            
+            $conn = Connection::getConn();
+
+            if($conn->connect_error){
+                throw new Exception('Algo deu errado');
+            }
+
+            $query = "SELECT * FROM users
+            WHERE email = ?";
+
+            $statement = $conn->prepare($query);
+
+            $statement->bind_param('s', $email);
+
+            $statement->execute();
+
+            $result = $statement->get_result();
+
+            while($row = $result->fetch_object('user')){
+                $data[] = $row;
+            }
+
+            return $data;
         }
 
         public function updateInfo($field, $info){
