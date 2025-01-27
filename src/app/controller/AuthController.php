@@ -23,13 +23,24 @@
         }
 
         public function register(){
-            echo 'criando usuario...';
+            foreach($_POST as $key => $value){
+                $user_info[$key] = $value;
+            }
+
+            $user = new User;
+            $user->register($user_info);
 
         }
 
         public function login(){
-            echo 'fazendo login...';
 
-            header('location: ../menu');
+            foreach($_POST as $key => $value){
+                $user_info[$key] = $value;
+            }
+
+            $user = new User;
+            $user->login($user_info);
+
+            // header('location: ../menu');
         }
     }
