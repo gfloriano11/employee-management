@@ -11,7 +11,7 @@
 
         public static function getConn(){
 
-            if(self::$conn){
+            if(self::$conn === null){
                 self::$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
             }
 
