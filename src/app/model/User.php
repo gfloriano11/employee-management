@@ -51,7 +51,7 @@
             $result = $statement->get_result();
 
             while($row = $result->fetch_object('user')){
-                $data[] = $row;
+                $data['user'] = $row;
             }
 
             return $data;
