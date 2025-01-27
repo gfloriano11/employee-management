@@ -34,12 +34,16 @@
 
         public function login(){
 
-            foreach($_POST as $key => $value){
-                $user_info[$key] = $value;
+            try {
+                foreach($_POST as $key => $value){
+                    $user_info[$key] = $value;
+                }
+    
+                $user = new User;
+                $user->login($user_info);
+            } catch (Exception $error){
+                header('location: ../');
             }
-
-            $user = new User;
-            $user->login($user_info);
 
             // header('location: ../menu');
         }
