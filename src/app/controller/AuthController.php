@@ -56,4 +56,13 @@
 
             // header('location: ../menu');
         }
+
+        public function logout(){
+            unset($_SESSION['user']);
+            session_destroy();
+
+            echo 'destruiu';
+
+            header('location: /projects/employee-management');
+        }
     }
