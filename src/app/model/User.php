@@ -31,6 +31,16 @@
             $this->email = $email;
             $this->password = $password;
 
+            $hash_pass = password_hash($password, PASSWORD_DEFAULT);
+
+            echo $hash_pass;
+
+            if(password_verify($password, $hash_pass)){
+                echo 'igual krai';
+            } else {
+                echo 'ih ala mo burro';
+            }
+
             $query = "INSERT INTO users
             (first_name, surname, email, user_pass, post, is_admin)
             VALUES
@@ -38,7 +48,7 @@
 
             $statement = $conn->prepare($query);
 
-            $statement->bind_param('ssssss', $name, $surname, $email, $password, $post, $admin);
+            $statement->bind_param('ssssss', $name, $surname, $email, $hash_pass, $post, $admin);
 
             $statement->execute();
         }
@@ -71,13 +81,22 @@
                 $data['user'] = $row;
             }
 
+            if(password_verify($password, $data['user']->user_pass)){
+                echo 'logando...';
+            } else {
+                echo 'senha invalida';
+            }
+
             if(!empty($data)){
 
-                if($email === $data['user']->email){
-                    echo 'deu boa, kk';
+                if(password_verify($password, $data['user']->user_pass)){
+                    echo 'logando...';
+
+                    $_SESSION['user'] = $data['user']->id;
+                    return true;
+                } else {
+                    echo 'senha invalida';
                 }
-    
-                return $data;
             } else {
                 
                 throw new Exception("Info inválida");
