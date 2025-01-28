@@ -2,7 +2,7 @@
 
     class Router{
 
-        public static function router($url){
+        public static function router($url, $user){
 
             // to clarify: predefined url, we use the pretty url's, but for a search, it's ok to use query string!
 
@@ -62,6 +62,39 @@
 
                 $uri_info['controller'] = $controller;
                 $uri_info['method'] = $method;
+            }
+
+            if($user != null){
+
+                $controllers = ['HomeController', 'EmployeeController', 'AuthController', 'ErrorController'];
+                $methods = ['menu', 'employee', 'logout', 'error'];
+
+                if(in_array($controller, $controllers)){
+
+                    if(!in_array($method, $methods)){
+
+                        header('location: /projects/employee-management/menu');
+
+                    } 
+                } else {
+                    header('location: /projects/employee-management/menu');
+                }
+                
+            } else {
+
+                $controllers = ['HomeController', 'AuthController', 'ErrorController'];
+                $methods = ['home', 'register_form', 'login_form', 'register', 'login', 'error'];
+
+                if(in_array($controller, $controllers)){
+
+                    if(!in_array($method, $methods)){
+
+                        header('location: /projects/employee-management/');
+
+                    } 
+                } else {
+                    header('location: /projects/employee-management/');
+                }
             }
 
             return $uri_info;
