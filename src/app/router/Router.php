@@ -52,20 +52,17 @@
                     }
                 }
 
-                $uri_info['controller'] = $controller;
-                $uri_info['method'] = $method;
-
             } else {
 
                 $controller = 'ErrorController';
                 $method = 'error';
-
-                $uri_info['controller'] = $controller;
-                $uri_info['method'] = $method;
             }
 
-            if($user != null){
+            $uri_info['controller'] = $controller;
+            $uri_info['method'] = $method;
 
+            if($user != null){
+                
                 $controllers = ['HomeController', 'EmployeeController', 'AuthController', 'ErrorController'];
                 $methods = ['menu', 'employee', 'logout', 'error'];
 
