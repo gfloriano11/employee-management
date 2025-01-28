@@ -31,10 +31,10 @@
                 $user = new User;
                 $user->register($user_info);
 
+                $user->login($user_info);
+
                 header('location: ../menu');
                 
-            } else {
-                header('location: ../');
             }
 
         }
