@@ -16,23 +16,18 @@
             $method = $uri_info['method'];
 
             if($this->user){
-                $routes = ['HomeController/menu'];
+                $routes = ['HomeController', 'AuthController'];
 
                 if(isset($controller)){
-
-                    $controller = "HomeController";
-                    $method = 'menu';
+                    if($controller === $routes[0]){
+                        $method = 'menu';
+                    }
+                    if($controller === $routes[1]){
+                        $method = 'logout';
+                    }
                 } 
             } else {
                 $routes = ['', 'HomeController/home', 'AuthController/login', 'AuthController/register'];
-
-                echo 'n tem user ';
-
-                if(isset($controller)){
-
-                    $controller = "HomeController";
-                    $method = 'home';
-                } 
             }
 
             call_user_func_array(array(new $controller, $method), array());
