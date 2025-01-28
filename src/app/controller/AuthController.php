@@ -30,6 +30,8 @@
             if($user_info['password'] === $user_info['confirm_password']){
                 $user = new User;
                 $user->register($user_info);
+
+                header('location: ../menu');
                 
             } else {
                 header('location: ../');
@@ -46,6 +48,8 @@
     
                 $user = new User;
                 $user->login($user_info);
+                
+                header('location: ../menu');
             } catch (Exception $error){
                 header('location: ../');
             }
