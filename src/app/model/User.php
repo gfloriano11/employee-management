@@ -26,20 +26,7 @@
                 echo $$key . ' ';
             }
 
-            $this->name = $name;
-            $this->surname = $surname;
-            $this->email = $email;
-            $this->password = $password;
-
             $hash_pass = password_hash($password, PASSWORD_DEFAULT);
-
-            echo $hash_pass;
-
-            if(password_verify($password, $hash_pass)){
-                echo 'igual krai';
-            } else {
-                echo 'ih ala mo burro';
-            }
 
             $query = "INSERT INTO users
             (first_name, surname, email, user_pass, post, is_admin)
