@@ -61,8 +61,6 @@
             unset($_SESSION['user']);
             session_destroy();
 
-            echo 'destruiu';
-
-            header('location: /projects/employee-management');
+            header('location: ../employee-management');
         }
     }
