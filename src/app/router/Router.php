@@ -14,7 +14,7 @@
 
             $controller = ucfirst($uri[0]) . 'Controller'; 
 
-            if($uri[0] === 'register' || $uri[0] === 'login'){
+            if($uri[0] === 'register' || $uri[0] === 'login' || $uri[0] === 'logout'){
                 $controller = 'AuthController';
             }
             
@@ -45,6 +45,10 @@
 
                     if($uri[0] === 'register' || $uri[0] === 'login'){
                         $method = $uri[0] . '_form';
+                    }
+
+                    if($uri[0] === 'logout'){
+                        $method = $uri[0];
                     }
                 }
 
