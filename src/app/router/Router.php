@@ -65,17 +65,17 @@
                 if($admin === 'YES'){
 
                     $controllers = ['HomeController', 'AdminController', 'EmployeeController', 'AuthController', 'ErrorController'];
-                    $methods = ['menu', 'admin', 'employees', 'employee', 'logout', 'error'];
+                    $methods = ['admin', 'employees', 'employee', 'logout', 'error'];
 
                     if(in_array($controller, $controllers)){
                     
                         if(!in_array($method, $methods)){
                             
-                            header('location: /projects/employee-management/menu');
+                            header('location: /projects/employee-management/admin');
                             
                         } 
                     } else {
-                        header('location: /projects/employee-management/menu');
+                        header('location: /projects/employee-management/admin');
                     }
                 } else {
                     
