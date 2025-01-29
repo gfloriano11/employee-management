@@ -33,25 +33,32 @@
 
                 $user->login($user_info);
 
-                header('location: ../menu');
-                
-            }
+                $admin = Admin::verify_permission($user);
 
+                if($admin === 'YES'){
+                    header('location: ../admin');
+                } else {
+                    header('location: ../menu');
+                }
+            }
         }
 
         public function login(){
 
-            try {
-                foreach($_POST as $key => $value){
-                    $user_info[$key] = $value;
-                }
+            
+            foreach($_POST as $key => $value){
+                $user_info[$key] = $value;
+            }
     
-                $user = new User;
-                $user->login($user_info);
+            $user = new User;
+            $user->login($user_info);
                 
+            $admin = Admin::verify_permission($user);
+
+            if($admin === 'YES'){
+                header('location: ../admin');
+            } else {
                 header('location: ../menu');
-            } catch (Exception $error){
-                header('location: ../');
             }
 
             // header('location: ../menu');
