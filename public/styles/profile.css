@@ -2,8 +2,35 @@
     background-color: #408ccb;
     width: 75vw;
     height: 70vh;
-    border: 1px solid #43639d;
+    border: 1.5px solid #43639d;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#picture_container{
+    margin-top: 20px;
+    width: 88%;
+    display: flex;
+    justify-content: left;
+}
+
+#picture{
+    width: 180px;
+    height: 180px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#user_pic{
+    filter: brightness(0) saturate(100%) invert(33%) sepia(10%) saturate(15%) hue-rotate(6deg) brightness(105%) contrast(79%);
+    max-width: 150px;
+    border-radius: 50%;
 }
 
 @media(max-width: 425px){
