@@ -58,24 +58,50 @@
                 $method = 'error';
             }
 
-            $uri_info['controller'] = $controller;
-            $uri_info['method'] = $method;
-
             if($user != null){
+
                 
                 $controllers = ['HomeController', 'EmployeeController', 'AuthController', 'ErrorController'];
                 $methods = ['menu', 'employee', 'logout', 'error'];
-
+                
                 if(in_array($controller, $controllers)){
-
+                    
                     if(!in_array($method, $methods)){
-
+                        
                         header('location: /projects/employee-management/menu');
-
+                        
                     } 
                 } else {
                     header('location: /projects/employee-management/menu');
                 }
+                
+                $admin = Admin::verify_permission($user);
+
+                if($admin === 'YES'){
+
+                    echo 'você é adm! ';
+
+                    $controllers = ['HomeController', 'AdminController', 'EmployeeController', 'AuthController', 'ErrorController'];
+                    $methods = ['menu', 'admin', 'employees', 'employee', 'logout', 'error'];
+
+                    if(in_array($controller, $controllers)){
+
+                        echo 'controller correto! ';
+
+                    
+                        if(!in_array($method, $methods)){
+
+                            echo 'metodo existe';
+                            
+                            header('location: /projects/employee-management/menu');
+                            
+                        } else {
+                            
+                        }
+                    } else {
+                        header('location: /projects/employee-management/menu');
+                    }
+                } 
                 
             } else {
 
@@ -93,6 +119,9 @@
                     header('location: /projects/employee-management/');
                 }
             }
+
+            $uri_info['controller'] = $controller;
+            $uri_info['method'] = $method;
 
             return $uri_info;
         }
