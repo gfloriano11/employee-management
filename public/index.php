@@ -15,6 +15,7 @@
     require_once '../src/app/controller/ErrorController.php';
 
     require_once '../src/app/model/User.php';
+    require_once '../src/app/model/Admin.php';
 
     $template = file_get_contents('../src/app/template/template.html');
 
