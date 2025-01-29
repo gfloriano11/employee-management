@@ -7,7 +7,7 @@
             echo 'selecione uma opção';
         }
 
-        public function employee(){
+        public function employees(){
             echo 'lista de funcionarios:';
         }
     }
