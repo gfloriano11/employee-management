@@ -20,16 +20,16 @@
                 </div>
                 <div id="infos_container">
                     <div class="info_container">
-                        <p>The Admin</p>
+                        <p>{{user.first_name}} {{user.surname}}</p>
                     </div>
                     <div class="info_container">
-                        <p>CEO - Chief Executive Officer</p>
+                        <p>{{user.post}}</p>
                     </div>
                     <div class="info_container">
-                        <p>admin@admin.com</p>
+                        <p>{{user.email}}</p>
                     </div>
                     <div class="info_container">
-                        <p>Permission: Admin</p>
+                        <p>Admin Permission: {{user.is_admin}}</p>
                     </div>
                 </div>
             </div>
