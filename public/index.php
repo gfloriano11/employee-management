@@ -16,6 +16,7 @@
 
     require_once '../src/app/model/User.php';
     require_once '../src/app/model/Admin.php';
+    require_once '../src/app/model/Employee.php';
 
     $template = file_get_contents('../src/app/template/template.html');
 
