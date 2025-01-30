@@ -1,5 +1,5 @@
 #user{
-    background-color: #d4d4d4;
+    background-color: rgb(212, 212, 212);
     width: 75vw;
     height: 70vh;
     border: 1.5px solid #c0c0c0;
@@ -19,7 +19,7 @@
 #picture{
     width: 180px;
     height: 180px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(232, 232, 232);
     border: 1px solid rgb(127, 127, 127);
     border-radius: 50%;
     display: flex;
@@ -28,9 +28,9 @@
 }
 
 #user_pic{
-    filter: brightness(0) saturate(100%) invert(33%) sepia(10%) saturate(15%) hue-rotate(6deg) brightness(105%) contrast(79%);
     max-width: 150px;
-    border-radius: 50%;
+    user-select: none;
+    cursor: pointer;
 }
 
 @media(max-width: 425px){
