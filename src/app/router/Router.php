@@ -23,52 +23,62 @@
                 $method = $uri[0];
             }
 
+            
             if(class_exists($controller)){
-
+                
                 if(!empty($uri[1])){
                     $method = $uri[1];
-
+                    
+                    if(is_numeric($uri[1])){
+                        $method = $uri[0];
+                    }
+                    
                     if(!empty($uri[2])){
                         $param = $uri[2];
-
+                        
                         $uri_info['action'] = $param; 
-
+                        
                         if(!empty($uri[3])){
                             $id = $uri[3];
-
+                            
                             $uri_info['id'] = $id;
                         }
                     }
-
+                    
                 } else {
                     $method = $uri[0];
-
+                    
                     if($uri[0] === 'register' || $uri[0] === 'login'){
                         $method = $uri[0] . '_form';
                     }
-
+                    
                     if($uri[0] === 'logout'){
                         $method = $uri[0];
                     }
                 }
-
+                
             } else {
-
+                
                 $controller = 'ErrorController';
                 $method = 'error';
             }
-
+            
             if($user != null){
-
+                
+                
                 $admin = Admin::verify_permission($user);
-
+                
                 if($admin === 'YES'){
-
+                    
                     $controllers = ['HomeController', 'AdminController', 'EmployeeController', 'AuthController', 'ErrorController'];
                     $methods = ['admin', 'employees', 'employee', 'logout', 'error'];
-
-                    if(in_array($controller, $controllers)){
                     
+                    if(in_array($controller, $controllers)){
+                        
+                        if($method === 'employee' && (!isset($uri[1]) || $uri[1] === '')){
+                            header('location: /projects/employee-management/employee/' . $user);
+                        }
+                        
                         if(!in_array($method, $methods)){
                             
                             header('location: /projects/employee-management/admin');
@@ -83,6 +93,10 @@
                     $methods = ['menu', 'employee', 'logout', 'error'];
                     
                     if(in_array($controller, $controllers)){
+
+                        if($method === 'employee' && (!isset($uri[1]) || $uri[1] === '')){
+                            header('location: /projects/employee-management/employee/' . $user);
+                        }
                         
                         if(!in_array($method, $methods)){
                             
@@ -95,22 +109,22 @@
                 }
                 
             } else {
-
+                
                 $controllers = ['HomeController', 'AuthController', 'ErrorController'];
                 $methods = ['home', 'register_form', 'login_form', 'register', 'login', 'error'];
-
+                
                 if(in_array($controller, $controllers)){
-
+                    
                     if(!in_array($method, $methods)){
-
+                        
                         header('location: /projects/employee-management/');
-
+                        
                     } 
                 } else {
                     header('location: /projects/employee-management/');
                 }
             }
-
+            
             $uri_info['controller'] = $controller;
             $uri_info['method'] = $method;
 
