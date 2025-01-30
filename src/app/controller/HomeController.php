@@ -4,20 +4,15 @@
 
         public function menu(){
 
-            // $admin = false;
+            $user['id'] = $_SESSION['user'];
 
-            // if($admin === true){
-                $loader = new Twig\Loader\FilesystemLoader('../src/app/view/user');
-                $twig = new Twig\Environment($loader);
-                $template = $twig->load('menu.html');
+            $loader = new Twig\Loader\FilesystemLoader('../src/app/view/user');
+            $twig = new Twig\Environment($loader);
+            $template = $twig->load('menu.html');
     
-                $content = $template->render();
+            $content = $template->render($user);
     
-                echo $content;
-            // } else {
-                // echo 'não é adm! sai daqui';
-            // }
-
+            echo $content;
         }
 
         public function home(){
