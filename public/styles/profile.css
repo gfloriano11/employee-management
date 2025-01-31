@@ -57,6 +57,27 @@
     border-radius: 10px;
 }
 
+#button_container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#blue_button{
+    display: block;
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
+    color: white;
+    border: 1px solid #8f8f8f;
+    background-color: #477CA8;
+    padding: 5px;
+    width: 100px;
+    height: 25px;
+    letter-spacing: 2px;
+    border-radius: 20px;
+}
+
 @media(max-width: 425px){
     #user{
         background-color: rgb(0, 55, 255);
