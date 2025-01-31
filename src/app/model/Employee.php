@@ -30,4 +30,13 @@
 
             return $data;
         }
+
+        public static function edit($user_id){
+
+            if($user_id === $_SESSION['user']){
+                echo 'usuario permitido';
+            } else {
+                echo 'acesso negado';
+            }
+        }
     }

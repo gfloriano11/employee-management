@@ -24,4 +24,20 @@
 
             echo $content;
         }
+
+        public function account(){
+            $id = $_SESSION['user'];
+
+            $loader = new Twig\Loader\FilesystemLoader('../src/app/view/user');
+            $twig = new Twig\Environment($loader);
+            $template = $twig->load('update_account.html');
+
+            $data['user'] = Employee::edit($id);
+
+            
+
+            $content = $template->render();
+
+            echo $content;
+        }
     }
