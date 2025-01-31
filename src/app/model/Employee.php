@@ -16,11 +16,17 @@
 
             $result = $statement->get_result();
 
+            $data = array();
+
             while($row = $result->fetch_assoc()){
                 $data = $row; 
             }
             
             Connection::endConn();
+
+            if(!$data){
+                header('location: ../error');
+            }
 
             return $data;
         }
