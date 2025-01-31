@@ -71,7 +71,7 @@
                 if($admin === 'YES'){
                     
                     $controllers = ['HomeController', 'AdminController', 'EmployeeController', 'AuthController', 'ErrorController'];
-                    $methods = ['admin', 'employees', 'employee', 'logout', 'error'];
+                    $methods = ['admin', 'employees', 'account', 'employee', 'logout', 'error'];
                     
                     if(in_array($controller, $controllers)){
                         
@@ -90,7 +90,7 @@
                 } else {
                     
                     $controllers = ['HomeController', 'EmployeeController', 'AuthController', 'ErrorController'];
-                    $methods = ['menu', 'employee', 'logout', 'error'];
+                    $methods = ['menu', 'employee', 'account', 'logout', 'error'];
                     
                     if(in_array($controller, $controllers)){
 
