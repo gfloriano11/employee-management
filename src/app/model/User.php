@@ -4,8 +4,7 @@
 
         private $id;
         private $password;
-        protected $name;
-        protected $surname;
+        protected $full_name;
         protected $email;
         protected $post;
 
@@ -29,13 +28,13 @@
             $hash_pass = password_hash($password, PASSWORD_DEFAULT);
 
             $query = "INSERT INTO users
-            (first_name, surname, email, user_pass, post, is_admin)
+            (full_name, email, user_pass, post, is_admin)
             VALUES
-            (?, ?, ?, ?, ?, ?)";
+            (?, ?, ?, ?, ?)";
 
             $statement = $conn->prepare($query);
 
-            $statement->bind_param('ssssss', $name, $surname, $email, $hash_pass, $post, $admin);
+            $statement->bind_param('sssss', $full_name, $email, $hash_pass, $post, $admin);
 
             $statement->execute();
         }
