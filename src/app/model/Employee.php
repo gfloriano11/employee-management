@@ -16,8 +16,6 @@
 
             $result = $statement->get_result();
 
-            $data = array();
-
             while($row = $result->fetch_assoc()){
                 $data = $row; 
             }
@@ -33,10 +31,29 @@
 
         public static function edit($user_id){
 
-            if($user_id === $_SESSION['user']){
-                echo 'usuario permitido';
-            } else {
+            $user_id = intval($user_id);
+
+            if(!($user_id === $_SESSION['user'])){
                 echo 'acesso negado';
+            } else {
+                $conn = Connection::getConn();
+    
+                $query = "SELECT * FROM users WHERE id = $user_id";
+    
+                $statement = $conn->prepare($query);
+    
+                $statement->execute();
+    
+                $result = $statement->get_result();
+    
+                while($row = $result->fetch_assoc()){
+                    $data = $row;
+                }
+    
+                Connection::endConn();
+                
+                return $data;
             }
+
         }
     }

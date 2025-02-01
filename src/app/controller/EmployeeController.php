@@ -10,23 +10,23 @@
 
             $id = $uri[1];
 
+            $_SESSION['employee'] = $id;
+
             $loader = new Twig\Loader\FilesystemLoader('../src/app/view/user');
             $twig = new Twig\Environment($loader);
             $template = $twig->load('profile.html');
 
             $data['user'] = Employee::get_info($id);
-
-            // var_dump($data);
-
-            // echo $data['user']['id'];
             
             $content = $template->render($data);
 
             echo $content;
+
         }
 
         public function account(){
-            $id = $_SESSION['user'];
+
+            $id = $_SESSION['employee'];
 
             $loader = new Twig\Loader\FilesystemLoader('../src/app/view/user');
             $twig = new Twig\Environment($loader);
@@ -34,9 +34,7 @@
 
             $data['user'] = Employee::edit($id);
 
-            
-
-            $content = $template->render();
+            $content = $template->render($data);
 
             echo $content;
         }
