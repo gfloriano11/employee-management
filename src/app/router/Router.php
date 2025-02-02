@@ -71,7 +71,7 @@
                 if($admin === 'YES'){
                     
                     $controllers = ['HomeController', 'AdminController', 'EmployeeController', 'AuthController', 'ErrorController'];
-                    $methods = ['admin', 'employees', 'account', 'employee', 'logout', 'error'];
+                    $methods = ['admin', 'employees', 'account', 'employee', 'logout', 'error', 'teste'];
                     
                     if(in_array($controller, $controllers)){
                         

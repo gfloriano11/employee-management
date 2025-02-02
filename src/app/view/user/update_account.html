@@ -3,11 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/styles/update.css">
+    <link rel="stylesheet" href="../public/styles/global.css">
     <title>Update Profile</title>
 </head>
 <body>
     <section id="application">
-        <div>oi</div>
+        <!-- <div>{{user.first_name}}</div> -->
+        <div id="form_container">
+            <p id="text">Atualize seus Dados:</p>
+            <form id="form" method="POST" action="teste" enctype="multipart/form-data">
+                <div id="info_container">
+                    <div id="inputs_container">
+                        <div class="input_container">
+                            <label for="name">Nome</label>
+                            <input type="text" name="name" class="input" value="{{user.full_name}}">
+                        </div>
+                        <div class="input_container">
+                            <label for="post">Cargo</label>
+                            <input type="text" name="post" class="input" value="{{user.post}}">
+                        </div>
+                        <div class="input_container">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" class="input" value="{{user.email}}">
+                        </div>
+                    </div>
+                    <div id="picture">
+                        <input type="file" name="profile_pic" id="picture_input">
+                        <img id="user_pic" src="{{user.profile_pic}}">
+                    </div>
+                </div>
+                <button>Enviar</button>
+            </form>
+        </div>
     </section>
+    <script src="../public/scripts/updatePicture.js"></script>
 </body>
 </html>
