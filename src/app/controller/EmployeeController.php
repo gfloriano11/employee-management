@@ -34,8 +34,26 @@
 
             $data['user'] = Employee::edit($id);
 
+            $img = '../src/assets/images/profile_pic/' . $data['user']['profile_pic'];
+
+            $data['user']['profile_pic'] = $img;
+
             $content = $template->render($data);
 
             echo $content;
+        }
+
+        public function teste(){
+
+            $data = $_POST;
+            $img = $_FILES['profile_pic'];
+
+            foreach($data as $key => $value){
+                $$key = $value;
+                $user[$key] = $$key; 
+            }
+
+            Employee::update($user, $img);
+
         }
     }
