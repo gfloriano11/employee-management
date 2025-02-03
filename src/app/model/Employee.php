@@ -19,8 +19,6 @@
             while($row = $result->fetch_assoc()){
                 $data = $row; 
             }
-            
-            Connection::endConn();
 
             if(!$data){
                 header('location: ../error');
@@ -49,8 +47,6 @@
                 while($row = $result->fetch_assoc()){
                     $data = $row;
                 }
-    
-                Connection::endConn();
                 
                 return $data;
             }
@@ -58,35 +54,36 @@
 
         public static function update($user_info, $img){
 
-            if($img === '' || $img === null){
+            if($img['name'] === '' || $img['name'] === null){
+
                 $img = Employee::get_info($_SESSION['employee']);
-            }
+                $hash_name = $img['profile_pic'];
 
-            $img_name = $img['name'];
-
-            // echo $img_name;
-
-            $tmp_name = $img['tmp_name'];
-            
-            $folder = '../src/assets/images/profile_pic/';
-            
-            $img_extension = '.' . strtolower(pathinfo($img_name, PATHINFO_EXTENSION));
-            
-            $hash_name = 'img_' . uniqid() . $img_extension;
-            
-            $path = $folder . $hash_name;
-
-            echo $path . ' ';
-
-            echo $hash_name . ' ';
-
-            if(move_uploaded_file($tmp_name, $path)) {
-                echo "Arquivo enviado com sucesso!";
             } else {
-                echo "Erro ao mover o arquivo.";
+                $img_name = $img['name'];
+    
+                $tmp_name = $img['tmp_name'];
+                
+                $folder = '../src/assets/images/profile_pic/';
+                
+                $img_extension = '.' . strtolower(pathinfo($img_name, PATHINFO_EXTENSION));
+                
+                $hash_name = 'img_' . uniqid() . $img_extension;
+                
+                $path = $folder . $hash_name;
+
+                if(move_uploaded_file($tmp_name, $path)) {
+                    echo "Arquivo enviado com sucesso!";
+                } else {
+                    echo "Erro ao mover o arquivo.";
+                }
             }
+
+
 
             $conn = Connection::getConn();
+
+            var_dump($user_info);
 
             foreach($user_info as $key => $value){
                 if($user_info[$key] === '' || $user_info[$key] === null){
@@ -100,15 +97,18 @@
             SET full_name = ?,
             post = ?,
             email = ?, 
-            profile_pic = ?";
+            profile_pic = ?
+            WHERE id = ?";
 
             $statement = $conn->prepare($query);
 
-            $statement->bind_param('ssss', $name, $post, $email, $hash_name);
+            $statement->bind_param('ssssi', $name, $post, $email, $hash_name, $_SESSION['employee']);
 
             $statement->execute();
 
-            // header('location: ' . $_SESSION['employee']);
+            Connection::endConn();
+
+            header('location: ' . $_SESSION['employee']);
 
         }
     }
