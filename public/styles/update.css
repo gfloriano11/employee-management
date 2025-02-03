@@ -51,15 +51,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     overflow: hidden;
+    transition: 1s all ease;
 }
 
 #user_pic{
-    max-width: 150px;
+    position: relative;
+    top: 50px;
+    max-width: 200px;
     min-width: none;
     user-select: none;
-    overflow: hidden;
+    cursor: pointer;
 }
 
 #picture_input{
