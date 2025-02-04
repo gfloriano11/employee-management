@@ -75,7 +75,7 @@
             echo $content;
         }
 
-        public function teste(){
+        public function update_profile(){
 
             $data = $_POST;
             $img = $_FILES['profile_pic'];
