@@ -48,6 +48,72 @@
             return $data;
         }
 
+        public static function get_employees_by_name(){
+            
+            $query = "SELECT * FROM users
+            ORDER BY full_name";
+
+            $conn = Connection::getConn();
+
+            $statement = $conn->prepare($query);
+
+            // $statement->bind_param('', $teste);
+
+            $statement->execute();
+
+            $result = $statement->get_result();
+
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }
+
+            return $data;
+        }
+
+        public static function get_employees_by_email(){
+            
+            $query = "SELECT * FROM users
+            ORDER BY email";
+
+            $conn = Connection::getConn();
+
+            $statement = $conn->prepare($query);
+
+            // $statement->bind_param('', $teste);
+
+            $statement->execute();
+
+            $result = $statement->get_result();
+
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }
+
+            return $data;
+        }
+        
+        public static function get_employees_by_post(){
+            
+            $query = "SELECT * FROM users
+            ORDER BY post";
+
+            $conn = Connection::getConn();
+
+            $statement = $conn->prepare($query);
+
+            // $statement->bind_param('', $teste);
+
+            $statement->execute();
+
+            $result = $statement->get_result();
+
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }
+
+            return $data;
+        }
+
         public static function edit($user_id){
 
             $user_id = intval($user_id);
