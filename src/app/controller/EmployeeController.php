@@ -45,11 +45,30 @@
 
         public function employees(){
 
+            // var_dump($_GET);
+
             $data['employees'] = Employee::get_employees();
 
             $loader = new Twig\Loader\FilesystemLoader('../src/app/view/user');
             $twig = new Twig\Environment($loader);
             $template = $twig->load('employees.html');
+            
+            if(isset($_GET['query'])){
+
+                $method = $_GET['query'];
+
+                if($method === 'by_name'){
+                    $data['employees'] = Employee::get_employees_by_name();
+                }
+
+                if($method === 'by_email'){
+                    $data['employees'] = Employee::get_employees_by_email();
+                }
+
+                if($method === 'by_post'){
+                    $data['employees'] = Employee::get_employees_by_post();
+                }
+            }
 
             $content = $template->render($data);
 
