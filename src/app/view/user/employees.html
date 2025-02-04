@@ -3,12 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="public/styles/employees.css">
+    <link rel="stylesheet" href="public/styles/global.css">
     <title>Document</title>
 </head>
 <body>
-    {% for employee in employees %}
-    <p>{{employee.full_name}}</p>
-    {% endfor %}
+    <section id="application">
+        <div id="employees_container">
+            <table id="employees">
+                <thead>
+                    <tr>
+                        <th>Foto:</th>
+                        <th>Nome:</th>
+                        <th>E-mail:</th>
+                        <th>Cargo:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in employees %}
+                    <tr class="employee">
+                        <td>
+                            <a class="pic_container" href="employee/{{employee.id}}">
+                                <img class="user_pic" src="src/assets/images/profile_pic/{{employee.profile_pic}}">
+                            </a>
+                        </td>
+                        <td>
+                            <div class="name">
+                                <p>{{employee.full_name}}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="email">
+                                <p>{{employee.email}}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="post">
+                                <p>{{employee.post}}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
 </body>
 </html>

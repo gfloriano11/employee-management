@@ -1,0 +1,48 @@
+#employees{
+    width: 520px;
+    height: 315px;
+    min-width: 10px;
+    /* border-radius: 20px; */
+    background-color: rgb(220, 220, 220);
+    border-collapse: collapse;
+    border-bottom: 3px solid #477CA8;
+}
+
+thead{
+    height: 50px;
+    background-color: #477CA8;
+    color: white;
+}
+
+td{
+    padding: 15px;
+}
+
+.employee{
+    padding-bottom: 20px;
+}
+
+.pic_container{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(232, 232, 232);
+    border: 1px solid rgb(127, 127, 127);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: 1s all ease;
+}
+
+.user_pic{
+    max-width: 100px;
+    min-width: none;
+    user-select: none;
+    cursor: pointer;
+    transition: 1s all ease;
+}
+
+.pic_container:hover{
+    transform: scale(1.05);
+}
