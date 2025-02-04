@@ -23,6 +23,11 @@
                 $method = $uri[0];
             }
 
+            if($uri[0] === 'employees'){
+                $controller = 'EmployeeController';
+                $method = $uri[0];
+            }
+
             
             if(class_exists($controller)){
                 
