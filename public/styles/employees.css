@@ -1,5 +1,5 @@
 #employees{
-    width: 520px;
+    width: 700px;
     height: 315px;
     min-width: 10px;
     /* border-radius: 20px; */
@@ -45,4 +45,17 @@ td{
 
 .pic_container:hover{
     transform: scale(1.05);
+}
+
+#remove_container{
+    border-radius: 10px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #477CA8;
+}
+
+.select{
+    color: white;
+    cursor: pointer;
+    user-select: none;
 }

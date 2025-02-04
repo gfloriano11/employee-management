@@ -9,14 +9,17 @@
 </head>
 <body>
     <section id="application">
+        <div id="remove_container">
+            <a class="select" href="employees">Remover Filtro</a>
+        </div>
         <div id="employees_container">
             <table id="employees">
                 <thead>
                     <tr>
-                        <th>Foto:</th>
-                        <th>Nome:</th>
-                        <th>E-mail:</th>
-                        <th>Cargo:</th>
+                        <th style="user-select: none;">Foto:</th>
+                        <th><a class="select" href="employees?query=by_name">Nome:</a></th>
+                        <th><a class="select" href="employees?query=by_email">Email:</a></th>
+                        <th><a class="select" href="employees?query=by_post">Post:</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,5 +51,6 @@
             </table>
         </div>
     </section>
+    <script src="public/scripts/employeesFilters.js"></script>
 </body>
 </html>
