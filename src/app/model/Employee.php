@@ -118,8 +118,28 @@
 
             $user_id = intval($user_id);
 
+            $is_admin = Admin::verify_permission($_SESSION['user']);
+
+            if($is_admin === 'YES'){
+                $conn = Connection::getConn();
+    
+                $query = "SELECT * FROM users WHERE id = $user_id";
+    
+                $statement = $conn->prepare($query);
+    
+                $statement->execute();
+    
+                $result = $statement->get_result();
+    
+                while($row = $result->fetch_assoc()){
+                    $data = $row;
+                }
+                
+                return $data;
+            }
+
             if(!($user_id === $_SESSION['user'])){
-                echo 'acesso negado';
+                header('location: ../');
             } else {
                 $conn = Connection::getConn();
     
