@@ -27,6 +27,27 @@
             return $data;
         }
 
+        public static function get_employees(){
+
+            $query = "SELECT * FROM users";
+
+            $conn = Connection::getConn();
+
+            $statement = $conn->prepare($query);
+
+            // $statement->bind_param('', $teste);
+
+            $statement->execute();
+
+            $result = $statement->get_result();
+
+            while($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }
+
+            return $data;
+        }
+
         public static function edit($user_id){
 
             $user_id = intval($user_id);
