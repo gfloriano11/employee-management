@@ -17,5 +17,19 @@
 
         public function employees(){
             echo 'lista de funcionarios:';
+
+            $data['employees'] = Employee::get_employees();
+
+            $loader = new Twig\Loader\FilesystemLoader('../src/app/view/user');
+            $twig = new Twig\Environment($loader);
+            $template = $twig->load('employees.html');
+
+            var_dump($data);
+
+            // echo $employees['id'];
+
+            $content = $template->render($data);
+
+            echo $content;
         }
     }
