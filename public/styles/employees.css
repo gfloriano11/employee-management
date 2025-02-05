@@ -1,9 +1,15 @@
+#employees_container{
+    max-height: 580px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
 #employees{
     min-width: 10px;
+    max-height: 580px;
     background-color: rgb(220, 220, 220);
     border-collapse: collapse;
     border-bottom: 3px solid #477CA8;
-    margin-bottom: 20px;
 }
 
 thead{
