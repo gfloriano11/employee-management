@@ -16,6 +16,10 @@ td{
     padding: 15px;
 }
 
+tr:nth-child(even){
+    background-color: rgb(210, 210, 210);
+}
+
 .pic_container{
     width: 100px;
     height: 100px;
