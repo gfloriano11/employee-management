@@ -115,3 +115,10 @@ label{
     margin-top: 5px;
     margin-right: 5px;
 }
+
+.incorrect_text{
+    color: rgb(244, 14, 14); 
+    margin-top: 10px; 
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
