@@ -95,7 +95,7 @@
                 } else {
                     
                     $controllers = ['HomeController', 'EmployeeController', 'AuthController', 'ErrorController'];
-                    $methods = ['menu', 'employee', 'account', 'logout', 'error'];
+                    $methods = ['menu', 'employee', 'employees', 'account', 'logout', 'error'];
                     
                     if(in_array($controller, $controllers)){
 
