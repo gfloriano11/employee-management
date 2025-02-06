@@ -20,74 +20,86 @@ submitButton.addEventListener('click', () => {
             
         })
 
-        
+        if(formData.password.length <= 3){
 
-        if(formData.password === formData.confirmPassword && formData.email.includes('@')){
-
-            let emailError = document.querySelector('.email_container .incorrect_text');
-            let passwordError = document.querySelector('.password_container .incorrect_text');
-
-            if(emailError && passwordError){
-                emailError.remove();
-                passwordError.remove();
-            }
-
-
-        } else{
-
-            const email_container = document.querySelector('.email_container');
             const password_container = document.querySelector('.password_container');
 
-            if(!formData.email.includes('@')){
+            const errorText = document.createElement('p');
+            errorText.innerText = 'Senha muito pequena';
 
-                let errorExists = document.querySelector('.email_container .incorrect_text');
-                
-                if(!errorExists){
+            password_container.appendChild(errorText);
+
+            errorText.classList.add('incorrect_text');
+
+        } else {
+
+            if(formData.password === formData.confirmPassword && formData.email.includes('@')){
+
+                let emailError = document.querySelector('.email_container .incorrect_text');
+                let passwordError = document.querySelector('.password_container .incorrect_text');
     
-                    const errorText = document.createElement('p');
-                    errorText.innerText = 'E-mail Incorreto';
-    
-                    errorText.classList.add('incorrect_text')
-    
-                    email_container.appendChild(errorText);
+                if(emailError && passwordError){
+                    emailError.remove();
+                    passwordError.remove();
                 }
-
-            } else {
-
-                let errorExists = document.querySelector('.email_container .incorrect_text');
-
-                if(errorExists){
-                    const email_container = document.querySelector('.email_container');
-                    const errorText = document.querySelector('.email_container .incorrect_text');
     
-                    email_container.removeChild(errorText);
+    
+            } else{
+    
+                const email_container = document.querySelector('.email_container');
+                const password_container = document.querySelector('.password_container');
+    
+                if(!formData.email.includes('@')){
+    
+                    let errorExists = document.querySelector('.email_container .incorrect_text');
+                    
+                    if(!errorExists){
+        
+                        const errorText = document.createElement('p');
+                        errorText.innerText = 'E-mail Incorreto';
+        
+                        errorText.classList.add('incorrect_text')
+        
+                        email_container.appendChild(errorText);
+                    }
+    
+                } else {
+    
+                    let errorExists = document.querySelector('.email_container .incorrect_text');
+    
+                    if(errorExists){
+                        const email_container = document.querySelector('.email_container');
+                        const errorText = document.querySelector('.email_container .incorrect_text');
+        
+                        email_container.removeChild(errorText);
+                    }
+    
                 }
-
-            }
-
-            if(formData.password !== formData.confirmPassword){
-
-                let errorExists = document.querySelector('.password_container .incorrect_text');
-
-                if(!errorExists){
-
-                    const errorText = document.createElement('p');
-                    errorText.innerText = 'Senhas não coincidem';
     
-                    errorText.classList.add('incorrect_text');
+                if(formData.password !== formData.confirmPassword){
     
-                    password_container.appendChild(errorText);
-                }
-            } else {
-
-                let errorExists = document.querySelector('.password_container .incorrect_text');
-
-                if(errorExists){
-
-                    const password_container = document.querySelector('.password_container');
-                    const errorText = document.querySelector('.password_container .incorrect_text');
-
-                    password_container.removeChild(errorText);
+                    let errorExists = document.querySelector('.password_container .incorrect_text');
+    
+                    if(!errorExists){
+    
+                        const errorText = document.createElement('p');
+                        errorText.innerText = 'Senhas não coincidem';
+        
+                        errorText.classList.add('incorrect_text');
+        
+                        password_container.appendChild(errorText);
+                    }
+                } else {
+    
+                    let errorExists = document.querySelector('.password_container .incorrect_text');
+    
+                    if(errorExists){
+    
+                        const password_container = document.querySelector('.password_container');
+                        const errorText = document.querySelector('.password_container .incorrect_text');
+    
+                        password_container.removeChild(errorText);
+                    }
                 }
             }
         }
