@@ -31,7 +31,6 @@ submitButton.addEventListener('click', () => {
     
             if(!errorExists){
 
-                console.log('erro: senha muito pequena')
                 const errorText = document.createElement('p');
                 errorText.innerText = 'Senha muito pequena';
 
@@ -40,8 +39,6 @@ submitButton.addEventListener('click', () => {
                 password_container.appendChild(errorText);
 
             } else if(errorExists.innerText === 'Senhas não coincidem'){
-
-                console.log('erro: senha muito pequena')
 
                 password_container.removeChild(errorExists);
 
@@ -59,7 +56,6 @@ submitButton.addEventListener('click', () => {
                 
                 if(!errorExists){
     
-                    console.log('adicionando erro email')
                     const errorText = document.createElement('p');
                     errorText.innerText = 'E-mail Incorreto';
     
@@ -98,7 +94,6 @@ submitButton.addEventListener('click', () => {
     
                 if(emailError){
 
-                    // console.log('removendo ambos erros')
                     emailError.remove();
                 } 
                 
@@ -106,8 +101,6 @@ submitButton.addEventListener('click', () => {
                 
                     passwordError.remove();
                 }
-
-                console.log(`auth/register?full_name=${formData.fullName}&email=${formData.email}&post=${formData.post}&password=${formData.password}&confirm_password=${formData.confirmPassword}&admin=${select}`);
 
                 fetch(`auth/register?full_name=${formData.fullName}&email=${formData.email}&post=${formData.post}&password=${formData.password}&confirm_password=${formData.confirmPassword}&admin=${select}`, {
                     method: 'POST',
@@ -135,8 +128,6 @@ submitButton.addEventListener('click', () => {
                 })
                 .catch(error => {
                     console.log('Erro na requisição: ', error);
-
-                    // location.reload();
                 })
     
 
@@ -151,7 +142,6 @@ submitButton.addEventListener('click', () => {
                     
                     if(!errorExists){
         
-                        console.log('adicionando erro email')
                         const errorText = document.createElement('p');
                         errorText.innerText = 'E-mail Incorreto';
         
@@ -166,7 +156,6 @@ submitButton.addEventListener('click', () => {
     
                     if(errorExists){
 
-                        console.log('removendo erro email')
                         const email_container = document.querySelector('.email_container');
                         const errorText = document.querySelector('.email_container .incorrect_text');
         
@@ -181,7 +170,6 @@ submitButton.addEventListener('click', () => {
     
                     if(!errorExists){
     
-                    console.log('erro: senhas não coincidem')
                         const errorText = document.createElement('p');
                         errorText.innerText = 'Senhas não coincidem';
         
@@ -191,8 +179,6 @@ submitButton.addEventListener('click', () => {
                     }
 
                 } else {
-
-                    console.log('verificando erro senha...');
     
                     let errorExists = document.querySelector('.password_container .incorrect_text');
     
