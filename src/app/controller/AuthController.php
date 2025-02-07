@@ -23,11 +23,15 @@
         }
 
         public function register(){
-            foreach($_POST as $key => $value){
-                $user_info[$key] = $value;
-            }
+            // foreach($_POST as $key => $value){
+            //     $user_info[$key] = $value;
+            // }
 
-            if($user_info['password'] === $user_info['confirm_password']){
+            
+
+            $user_info = json_decode(file_get_contents('php://input'), true);
+
+            if($user_info['password'] === $user_info['confirmPassword']){
                 $user = new User;
                 $user->register($user_info);
 
@@ -36,9 +40,17 @@
                 $admin = Admin::verify_permission($user);
 
                 if($admin === 'YES'){
-                    header('location: ../admin');
+                    // header('location: ../admin');
+                    echo json_encode([
+                        'success' => true,
+                        'redirect' => '../admin'
+                    ]);
                 } else {
-                    header('location: ../menu');
+                    // header('location: ../menu');
+                    echo json_encode([
+                        'success' => true,
+                        'redirect' => '../menu'
+                    ]);
                 }
             }
         }

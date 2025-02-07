@@ -8,6 +8,7 @@ submitButton.addEventListener('click', () => {
     if(buttonValue === 'register'){
 
         let inputs = document.querySelectorAll('.input');
+        let select = document.querySelector('#select').value;
 
         let formData = {}; // braces means that the object can use key-values
         // if it is [] it means that it can be used only numerical values... [0], [1], [2]...
@@ -17,6 +18,7 @@ submitButton.addEventListener('click', () => {
             input.name = toCamelCase(input.name);
 
             formData[input.name] = input.value;
+
             
         })
 
@@ -91,6 +93,34 @@ submitButton.addEventListener('click', () => {
                 
                     passwordError.remove();
                 }
+
+                fetch('auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: formData.fullName,
+                        email: formData.email,
+                        password: formData.password,
+                        confirm_password: formData.confirmPassword,
+                        post: formData.post,
+                        admin: select
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if(data.sucess){
+                        
+                        location.href = data.redirect;
+                    } else {
+                        console.log(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.log('Erro na requisição: ', error);
+                })
     
     
             } else{
