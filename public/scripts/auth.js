@@ -22,24 +22,73 @@ submitButton.addEventListener('click', () => {
 
         if(formData.password.length <= 3){
 
+            const email_container = document.querySelector('.email_container');
             const password_container = document.querySelector('.password_container');
 
-            const errorText = document.createElement('p');
-            errorText.innerText = 'Senha muito pequena';
+            let errorExists = document.querySelector('.password_container .incorrect_text');
+    
+            if(!errorExists){
 
-            password_container.appendChild(errorText);
+                console.log('adicionando erro senha')
+                const errorText = document.createElement('p');
+                errorText.innerText = 'Senha muito pequena';
 
-            errorText.classList.add('incorrect_text');
+                errorText.classList.add('incorrect_text');
+
+                password_container.appendChild(errorText);
+            } 
+
+            if(!formData.email.includes('@')){
+
+                let errorExists = document.querySelector('.email_container .incorrect_text');
+                
+                if(!errorExists){
+    
+                    console.log('adicionando erro email')
+                    const errorText = document.createElement('p');
+                    errorText.innerText = 'E-mail Incorreto';
+    
+                    errorText.classList.add('incorrect_text')
+    
+                    email_container.appendChild(errorText);
+                }
+
+            } else {
+
+                let errorExists = document.querySelector('.email_container .incorrect_text');
+
+                if(errorExists){
+                    const email_container = document.querySelector('.email_container');
+                    const errorText = document.querySelector('.email_container .incorrect_text');
+    
+                    email_container.removeChild(errorText);
+                }
+
+            }
 
         } else {
+
+            let emailError = document.querySelector('.email_container .incorrect_text');
+            let passwordError = document.querySelector('.password_container .incorrect_text');
+
+            if(passwordError && emailError){
+                passwordError.remove()
+                emailError.remove();
+            }
 
             if(formData.password === formData.confirmPassword && formData.email.includes('@')){
 
                 let emailError = document.querySelector('.email_container .incorrect_text');
                 let passwordError = document.querySelector('.password_container .incorrect_text');
     
-                if(emailError && passwordError){
+                if(emailError){
+
+                    // console.log('removendo ambos erros')
                     emailError.remove();
+                } 
+                
+                if(passwordError){
+                
                     passwordError.remove();
                 }
     
@@ -55,6 +104,7 @@ submitButton.addEventListener('click', () => {
                     
                     if(!errorExists){
         
+                        console.log('adicionando erro email')
                         const errorText = document.createElement('p');
                         errorText.innerText = 'E-mail Incorreto';
         
@@ -68,6 +118,8 @@ submitButton.addEventListener('click', () => {
                     let errorExists = document.querySelector('.email_container .incorrect_text');
     
                     if(errorExists){
+
+                        console.log('removendo erro email')
                         const email_container = document.querySelector('.email_container');
                         const errorText = document.querySelector('.email_container .incorrect_text');
         
@@ -82,6 +134,7 @@ submitButton.addEventListener('click', () => {
     
                     if(!errorExists){
     
+                    console.log('adicionando erro senha')
                         const errorText = document.createElement('p');
                         errorText.innerText = 'Senhas não coincidem';
         
@@ -89,12 +142,16 @@ submitButton.addEventListener('click', () => {
         
                         password_container.appendChild(errorText);
                     }
+
                 } else {
+
+                    console.log('verificando erro senha...');
     
                     let errorExists = document.querySelector('.password_container .incorrect_text');
     
                     if(errorExists){
     
+                    console.log('removendo erro senha')
                         const password_container = document.querySelector('.password_container');
                         const errorText = document.querySelector('.password_container .incorrect_text');
     
