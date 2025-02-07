@@ -31,14 +31,27 @@ submitButton.addEventListener('click', () => {
     
             if(!errorExists){
 
-                console.log('adicionando erro senha')
+                console.log('erro: senha muito pequena')
                 const errorText = document.createElement('p');
                 errorText.innerText = 'Senha muito pequena';
 
                 errorText.classList.add('incorrect_text');
 
                 password_container.appendChild(errorText);
-            } 
+
+            } else if(errorExists.innerText === 'Senhas não coincidem'){
+
+                console.log('erro: senha muito pequena')
+
+                password_container.removeChild(errorExists);
+
+                const errorText = document.createElement('p');
+                errorText.innerText = 'Senha muito pequena';
+
+                errorText.classList.add('incorrect_text');
+
+                password_container.appendChild(errorText);
+            }
 
             if(!formData.email.includes('@')){
 
@@ -94,13 +107,15 @@ submitButton.addEventListener('click', () => {
                     passwordError.remove();
                 }
 
-                fetch('auth/register', {
+                console.log(`auth/register?full_name=${formData.fullName}&email=${formData.email}&post=${formData.post}&password=${formData.password}&confirm_password=${formData.confirmPassword}&admin=${select}`);
+
+                fetch(`auth/register?full_name=${formData.fullName}&email=${formData.email}&post=${formData.post}&password=${formData.password}&confirm_password=${formData.confirmPassword}&admin=${select}`, {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json',
                     },
                     body: JSON.stringify({
-                        name: formData.fullName,
+                        full_name: formData.fullName,
                         email: formData.email,
                         password: formData.password,
                         confirm_password: formData.confirmPassword,
@@ -111,18 +126,20 @@ submitButton.addEventListener('click', () => {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    if(data.sucess){
+                    if(data.success){
                         
-                        location.href = data.redirect;
+                        window.location = data.redirect;
                     } else {
                         console.log(data.message);
                     }
                 })
                 .catch(error => {
                     console.log('Erro na requisição: ', error);
+
+                    // location.reload();
                 })
     
-    
+
             } else{
     
                 const email_container = document.querySelector('.email_container');
@@ -164,7 +181,7 @@ submitButton.addEventListener('click', () => {
     
                     if(!errorExists){
     
-                    console.log('adicionando erro senha')
+                    console.log('erro: senhas não coincidem')
                         const errorText = document.createElement('p');
                         errorText.innerText = 'Senhas não coincidem';
         
