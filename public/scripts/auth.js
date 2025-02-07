@@ -163,13 +163,22 @@ submitButton.addEventListener('click', () => {
     
     } else{
 
+        let inputs = document.querySelectorAll('.input');
+
+        let formData = {};
+
+        inputs.forEach(input => {
+
+            input.name = toCamelCase(input.name);
+
+            formData[input.name] = input.value;
+
+        })
+
+        if(formData.email && formData.password){
+            console.log('autenticando...');
+
+            fetch('')
+        }
     }
 })
-
-
-function verifyRegister(){
-    
-    const password = document.querySelector('#password');
-    const confirmPassword = document.querySelector('#confirm_password');
-    
-}
