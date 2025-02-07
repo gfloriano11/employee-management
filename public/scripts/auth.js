@@ -102,7 +102,7 @@ submitButton.addEventListener('click', () => {
                     passwordError.remove();
                 }
 
-                fetch(`auth/register?full_name=${formData.fullName}&email=${formData.email}&post=${formData.post}&password=${formData.password}&confirm_password=${formData.confirmPassword}&admin=${select}`, {
+                fetch(`auth/register`, {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json',
@@ -211,7 +211,9 @@ submitButton.addEventListener('click', () => {
         if(formData.email && formData.password){
             console.log('autenticando...');
 
-            fetch('')
+            fetch(`auth/login`, {
+
+            })
         }
     }
 })
