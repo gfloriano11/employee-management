@@ -81,16 +81,16 @@
                     if(in_array($controller, $controllers)){
                         
                         if($method === 'employee' && (!isset($uri[1]) || $uri[1] === '')){
-                            header('location: /projects/employee-management/employee/' . $user);
+                            header('location: /employee-management/employee/' . $user);
                         }
                         
                         if(!in_array($method, $methods)){
                             
-                            header('location: /projects/employee-management/admin');
+                            header('location: /employee-management/admin');
                             
                         } 
                     } else {
-                        header('location: /projects/employee-management/admin');
+                        header('location: /employee-management/admin');
                     }
                 } else {
                     
@@ -100,16 +100,16 @@
                     if(in_array($controller, $controllers)){
 
                         if($method === 'employee' && (!isset($uri[1]) || $uri[1] === '')){
-                            header('location: /projects/employee-management/employee/' . $user);
+                            header('location: /employee-management/employee/' . $user);
                         }
                         
                         if(!in_array($method, $methods)){
                             
-                            header('location: /projects/employee-management/menu');
+                            header('location: /employee-management/menu');
                             
                         } 
                     } else {
-                        header('location: /projects/employee-management/menu');
+                        header('location: /employee-management/menu');
                     }
                 }
                 
@@ -122,11 +122,11 @@
                     
                     if(!in_array($method, $methods)){
                         
-                        header('location: /projects/employee-management/');
+                        header('location: /employee-management/');
                         
                     } 
                 } else {
-                    header('location: /projects/employee-management/');
+                    header('location: /employee-management/');
                 }
             }
             
