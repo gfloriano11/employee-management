@@ -44,7 +44,7 @@ Administrators has special access permissions to management their employees.
 - **MySQL**;
 - **Twig**;
 - **Composer**;
-- **Arquitetura MVC**;
+- **MVC Methodology**;
 
 ## 📂 Project Structure:
 
