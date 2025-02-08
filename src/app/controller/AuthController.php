@@ -40,37 +40,37 @@
                         'success' => true,
                         'redirect' => 'admin'
                     ]);
-                    exit;
                 } else {
                     // header('location: ../menu');
                     echo json_encode([
                         'success' => true,
                         'redirect' => 'menu'
                     ]);
-                    exit;
                 }
             }
         }
 
         public function login(){
 
-            
-            foreach($_POST as $key => $value){
-                $user_info[$key] = $value;
-            }
+            $user_info = json_decode(file_get_contents('php://input'), true);
     
             $user = new User;
             $user->login($user_info);
                 
-            $admin = Admin::verify_permission($user);
+            $admin = Admin::verify_permission($_SESSION['user']);
 
             if($admin === 'YES'){
-                header('location: ../admin');
+                echo json_encode([
+                    'success' => true,
+                    'redirect' => 'admin'
+                ]);
             } else {
-                header('location: ../menu');
+                echo json_encode([
+                    'success' => true,
+                    'redirect' => 'menu'
+                ]);
             }
 
-            // header('location: ../menu');
         }
 
         public function logout(){
