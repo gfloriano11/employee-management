@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /projects/employee-management/
+RewriteBase /employee-management/
 
 RewriteRule ^$ public/index.php?url=home [QSA,L]
 
