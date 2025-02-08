@@ -148,4 +148,4 @@ If you want, you can contribute to the project, open an issue or a Pull Request
 
 ---
 
-📌 Developed by **Gustavo Floriano** <a href="github.com/gfloriano11"></a> 🚀
+📌 Developed by **Gustavo Floriano** <a href="github.com/gfloriano11">Github Profile</a> 🚀
