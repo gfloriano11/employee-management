@@ -118,7 +118,7 @@ submitButton.addEventListener('click', () => {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data);
+                    // console.log(data);
                     if(data.success){
                         window.location = data.redirect;
                     } else {
@@ -221,9 +221,53 @@ submitButton.addEventListener('click', () => {
             })
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 if(data.success){
                     window.location = data.redirect;
+                } else if(data.type === 'password'){
+
+                    console.log(data.type);
+                    let passwordError = document.querySelector('.password_container .incorrect_text');
+                
+                    if(!passwordError){
+                        
+                        let errorText = document.createElement('p');
+    
+                        errorText.innerText = data.message;
+    
+                        errorText.classList.add('incorrect_text');
+    
+                        const password_container = document.querySelector('.password_container');
+    
+                        password_container.appendChild(errorText);
+                    }
+
+                    let emailError = document.querySelector('.email_container .incorrect_text');
+                    if(emailError){
+
+                        console.log('removendo...')
+                        
+                        emailError.remove();
+                    }
+                } else if(data.type === 'email'){
+
+                    if(data.success === false){
+                        console.log(data.type);
+    
+                        let errorExists = document.querySelector('.email_container .incorrect_text');
+    
+                        if(!errorExists){
+    
+                            const errorText = document.createElement('p');
+                            errorText.innerText = data.message;
+    
+                            const email_container = document.querySelector('.email_container');
+    
+                            errorText.classList.add('incorrect_text');
+    
+                            email_container.appendChild(errorText);
+                        }
+                    }
+
                 } else {
                     console.log(data.message);
                 }
