@@ -95,3 +95,27 @@
     border: 1px solid #8f8f8f;
     background-color: #477CA8;
 }
+
+@media (max-width: 560px){
+    #form_container{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    #info_container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 60vh;
+    }
+
+    #form{
+        width: auto;
+    }
+
+    label{
+        text-align: center;
+    }
+}
