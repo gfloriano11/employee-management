@@ -106,7 +106,7 @@ Administrators has special access permissions to management their employees.
 │── composer.phar
 ```
 
-## 🛠️ Instalação e Execução
+## 🛠️ How to Install?
 
 1. Clone this repository:
    ```sh
@@ -131,12 +131,17 @@ Administrators has special access permissions to management their employees.
 
 6. Put composer.phar in project root
 
-7. In the terminal (CMD or VSCode) enter in the project root and write:
+7. IN the terminal (CMD or VSCode) enter in the project root and write:
+   ```sh
+   composer install
+   ```
+
+8. In the terminal (CMD or VSCode) enter in the project root and write:
    ```sh
    php composer.phar install
    ```
 
-8. In the terminal (CMD or VSCode) enter in the project root and write:
+9. In the terminal (CMD or VSCode) enter in the project root and write:
    ```sh
    composer require twig/twig
    ```
@@ -144,7 +149,7 @@ Now, you can use my Employee-Management APP. Thanks!
 
 ## ✨ Contribuition
 
-If you want, you can contribute to the project, open an issue or a Pull Request
+If you want, you can contribute to the project, open an issue or a Pull Request! 😁
 
 ---
 
