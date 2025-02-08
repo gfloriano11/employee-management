@@ -23,7 +23,7 @@ Administrators has special access permissions to management their employees.
 - List of all registred employees;
 - Administrators can edit all the data from users.
 
-### 🔒 Acsess Permissions:
+### 🔒 Acsess Permissions
 
 - **Guests**: Access to home, register and login page. 
 - **User**: Access to menu and profile page.
