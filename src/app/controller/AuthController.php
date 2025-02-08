@@ -56,16 +56,6 @@
     
             $user = new User;
             $user->login($user_info);
-
-            if(!$user){
-                exit;
-            } else {
-                echo json_encode([
-                    'success' => true,
-                    'type' => 'email',
-                    'message' => 'email cadastrado'
-                ]);
-            }
                 
             $admin = Admin::verify_permission($_SESSION['user']);
 

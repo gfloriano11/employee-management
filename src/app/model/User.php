@@ -70,7 +70,7 @@
                 if(password_verify($password, $data['user']->user_pass)){
 
                     $_SESSION['user'] = $data['user']->id;
-                    return true;
+                    return;
                 } else {
                     echo json_encode([
                         'success' => false,
