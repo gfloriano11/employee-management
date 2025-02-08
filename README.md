@@ -115,7 +115,7 @@ Administrators has special access permissions to management their employees.
 2. Install composer:
    <a href="https://getcomposer.org/Composer-Setup.exe">Download</a>
 
-3. Create "composer.json" in project root
+3. Create "composer.json" in project root [If doesn't exists!]
 
 4. Put this code in composer.json
    ```sh
