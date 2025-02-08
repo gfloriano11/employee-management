@@ -22,7 +22,6 @@
 
             foreach($info as $key => $value){
                 $$key = $value;
-                echo $$key . ' ';
             }
 
             $hash_pass = password_hash($password, PASSWORD_DEFAULT);
@@ -43,7 +42,6 @@
 
             foreach($info as $key => $value){
                 $$key = $value;
-                echo $$key . ' ';
             }
             
             $conn = Connection::getConn();
@@ -67,21 +65,12 @@
                 $data['user'] = $row;
             }
 
-            if(password_verify($password, $data['user']->user_pass)){
-                echo 'logando...';
-            } else {
-                echo 'senha invalida';
-            }
-
             if(!empty($data)){
 
                 if(password_verify($password, $data['user']->user_pass)){
-                    echo 'logando...';
 
                     $_SESSION['user'] = $data['user']->id;
                     return true;
-                } else {
-                    echo 'senha invalida';
                 }
             } else {
                 

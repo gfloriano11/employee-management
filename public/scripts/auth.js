@@ -8,6 +8,7 @@ submitButton.addEventListener('click', () => {
     if(buttonValue === 'register'){
 
         let inputs = document.querySelectorAll('.input');
+        let select = document.querySelector('#select').value;
 
         let formData = {}; // braces means that the object can use key-values
         // if it is [] it means that it can be used only numerical values... [0], [1], [2]...
@@ -17,6 +18,7 @@ submitButton.addEventListener('click', () => {
             input.name = toCamelCase(input.name);
 
             formData[input.name] = input.value;
+
             
         })
 
@@ -29,14 +31,24 @@ submitButton.addEventListener('click', () => {
     
             if(!errorExists){
 
-                console.log('adicionando erro senha')
                 const errorText = document.createElement('p');
                 errorText.innerText = 'Senha muito pequena';
 
                 errorText.classList.add('incorrect_text');
 
                 password_container.appendChild(errorText);
-            } 
+
+            } else if(errorExists.innerText === 'Senhas não coincidem'){
+
+                password_container.removeChild(errorExists);
+
+                const errorText = document.createElement('p');
+                errorText.innerText = 'Senha muito pequena';
+
+                errorText.classList.add('incorrect_text');
+
+                password_container.appendChild(errorText);
+            }
 
             if(!formData.email.includes('@')){
 
@@ -44,7 +56,6 @@ submitButton.addEventListener('click', () => {
                 
                 if(!errorExists){
     
-                    console.log('adicionando erro email')
                     const errorText = document.createElement('p');
                     errorText.innerText = 'E-mail Incorreto';
     
@@ -83,7 +94,6 @@ submitButton.addEventListener('click', () => {
     
                 if(emailError){
 
-                    // console.log('removendo ambos erros')
                     emailError.remove();
                 } 
                 
@@ -91,8 +101,35 @@ submitButton.addEventListener('click', () => {
                 
                     passwordError.remove();
                 }
+
+                fetch(`auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        full_name: formData.fullName,
+                        email: formData.email,
+                        password: formData.password,
+                        confirm_password: formData.confirmPassword,
+                        post: formData.post,
+                        admin: select
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    if(data.success){
+                        window.location = data.redirect;
+                    } else {
+                        console.log(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.log('Erro na requisição: ', error);
+                })
     
-    
+
             } else{
     
                 const email_container = document.querySelector('.email_container');
@@ -104,7 +141,6 @@ submitButton.addEventListener('click', () => {
                     
                     if(!errorExists){
         
-                        console.log('adicionando erro email')
                         const errorText = document.createElement('p');
                         errorText.innerText = 'E-mail Incorreto';
         
@@ -119,7 +155,6 @@ submitButton.addEventListener('click', () => {
     
                     if(errorExists){
 
-                        console.log('removendo erro email')
                         const email_container = document.querySelector('.email_container');
                         const errorText = document.querySelector('.email_container .incorrect_text');
         
@@ -134,7 +169,6 @@ submitButton.addEventListener('click', () => {
     
                     if(!errorExists){
     
-                    console.log('adicionando erro senha')
                         const errorText = document.createElement('p');
                         errorText.innerText = 'Senhas não coincidem';
         
@@ -144,8 +178,6 @@ submitButton.addEventListener('click', () => {
                     }
 
                 } else {
-
-                    console.log('verificando erro senha...');
     
                     let errorExists = document.querySelector('.password_container .incorrect_text');
     
@@ -175,10 +207,80 @@ submitButton.addEventListener('click', () => {
 
         })
 
-        if(formData.email && formData.password){
-            console.log('autenticando...');
+        if(formData.email.includes('@') && formData.password.length > 3){
 
-            fetch('')
+            fetch(`auth/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    password: formData.password
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if(data.success){
+                    window.location = data.redirect;
+                } else {
+                    console.log(data.message);
+                }
+            })
+            .catch(error => {
+                console.log('Erro na requisição: ', error);
+            })
+        } else {
+
+            if(!formData.email.includes('@')){
+
+                let errorExists = document.querySelector('.email_container .incorrect_text');
+
+                if(!errorExists){
+
+                    const errorText = document.createElement('p');
+                    errorText.innerText = 'E-mail incorreto';
+
+                    const email_container = document.querySelector('.email_container');
+
+                    errorText.classList.add('incorrect_text');
+
+                    email_container.appendChild(errorText);
+                }
+            } else {
+
+                let errorExists = document.querySelector('.email_container .incorrect_text');
+
+                if(errorExists){
+                    errorExists.remove();
+                }
+            }
+
+            if(!formData.password){
+
+                let errorExists = document.querySelector('.password_container .incorrect_text');
+                
+                if(!errorExists){
+                    
+                    let errorText = document.createElement('p');
+
+                    errorText.innerText = 'Senha incorreta';
+
+                    errorText.classList.add('incorrect_text');
+
+                    const password_container = document.querySelector('.password_container');
+
+                    password_container.appendChild(errorText);
+                } 
+            } else {
+
+                let errorExists = document.querySelector('.password_container .incorrect_text');
+
+                if(errorExists){
+                    errorExists.remove();
+                }
+            }
         }
     }
 })
