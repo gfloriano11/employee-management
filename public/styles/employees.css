@@ -67,6 +67,12 @@ tr:nth-child(even){
     user-select: none;
 }
 
+.picture_td{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 th, td {
     word-wrap: break-word;
     overflow-wrap: break-word;
