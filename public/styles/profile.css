@@ -151,6 +151,15 @@
         width: 120px;
         height: 120px;
     }
+
+    #user_pic{
+        width: 120px;
+        height: 120px;
+    }
+
+    #text{
+        display: none;
+    }
 }
 
 @media (max-width: 375px){
@@ -170,6 +179,11 @@
     }
 
     #picture{
+        width: 100px;
+        height: 100px;
+    }
+
+    #user_pic{
         width: 100px;
         height: 100px;
     }
