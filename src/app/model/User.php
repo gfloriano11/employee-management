@@ -71,10 +71,22 @@
 
                     $_SESSION['user'] = $data['user']->id;
                     return true;
+                } else {
+                    echo json_encode([
+                        'success' => false,
+                        'type' => 'password',
+                        'message' => 'Senha incorreta'
+                    ]);
+                    exit;
                 }
             } else {
-                
-                throw new Exception("Info inválida");
-            } 
+
+                echo json_encode([
+                    'success' => false,
+                    'type' => 'email',
+                    'message' => 'E-mail não cadastrado'
+                ]);
+                exit;
+            }
         }
     }
