@@ -221,7 +221,7 @@ submitButton.addEventListener('click', () => {
             })
             .then(response => response.json())
             .then(data => {
-                if(data.success){
+                if(data.success === true){
                     window.location = data.redirect;
                 } else if(data.type === 'password'){
 
@@ -254,6 +254,7 @@ submitButton.addEventListener('click', () => {
                         console.log(data.type);
     
                         let errorExists = document.querySelector('.email_container .incorrect_text');
+                        let passwordError = document.querySelector('.password_container .incorrect_text');
     
                         if(!errorExists){
     
@@ -265,6 +266,10 @@ submitButton.addEventListener('click', () => {
                             errorText.classList.add('incorrect_text');
     
                             email_container.appendChild(errorText);
+
+                        }
+                        if(passwordError){
+                            passwordError.remove();
                         }
                     }
 
