@@ -113,9 +113,7 @@ Administrators has special access permissions to management their employees.
    git clone https://github.com/gfloriano11/employee-management.git
    ```
 2. Install composer:
-  ```sh
    <a href="https://getcomposer.org/Composer-Setup.exe">Download</a>
-   ```
 
 3. Create "composer.json" in project root
 
@@ -129,9 +127,7 @@ Administrators has special access permissions to management their employees.
    ```
 
 5. Install "composer.phar":
-  ```sh
   <a href="https://getcomposer.org/composer.phar">Download</a>
-  ```
 
 6. Put composer.phar in project root
 
@@ -152,4 +148,4 @@ If you want, you can contribute to the project, open an issue or a Pull Request
 
 ---
 
-📌 Desenvolvido por **Gustavo Floriano** 🚀
+📌 Developed by **Gustavo Floriano** <a href="github.com/gfloriano11"></a> 🚀
